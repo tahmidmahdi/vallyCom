@@ -65,11 +65,11 @@ const Header = () => {
       </div>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Navbar.Brand href="#home">Category</Navbar.Brand>
+          <Nav className="ms-auto">
+            <Nav.Link href="#home">News Feed</Nav.Link>
+            <Nav.Link href="#features">Merchant Zone</Nav.Link>
+            <Nav.Link href="#pricing">Help</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
