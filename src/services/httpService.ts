@@ -4,8 +4,6 @@ const instance = axios.create({
   timeout: 15000,
 });
 
-const responseBody = () => (response: AxiosResponse) => response.data.data;
-
 // const get = (url: string) => instance.get(url).then(responseBody);
 
 // const post = (url: string, body: object) =>
@@ -18,15 +16,16 @@ const responseBody = () => (response: AxiosResponse) => response.data.data;
 //   instance.delete(url).then(responseBody);
 
 // const getProducts = () => instance.get('/product').then((res) => res.data.data);
+// const responseBody = () => (response: AxiosResponse) => response.data.data;
 
+const responseBody = (response: AxiosResponse) => response.data.data;
 const requests = {
   get: (url: string) => instance.get(url).then(responseBody),
   post: (url: string, body: object) =>
     instance.post(url, body).then(responseBody),
   patch: (url: string, body: object) =>
     instance.patch(url, body).then(responseBody),
-  delete: (url: string, body: object) =>
-    instance.delete(url).then(responseBody),
+  delete: (url: string) => instance.delete(url).then(responseBody),
 };
 
 export default requests;

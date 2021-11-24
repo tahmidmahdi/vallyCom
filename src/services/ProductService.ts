@@ -1,22 +1,27 @@
 import requests from 'services/httpService';
+import { IProduct } from 'types';
 class ProductService {
-  getProducts(): Promise<any> {
+  getProducts(): Promise<IProduct[]> {
     return requests.get('/product');
   }
 
-  getProductByID(id: string): Promise<any> {
+  getMerchantsProducts(): Promise<IProduct[]> {
+    return requests.get('/merchant/products');
+  }
+
+  getProductByID(id: string): Promise<IProduct> {
     return requests.get(`/product/${id}`);
   }
 
-  addProductByID(body: {}): Promise<any> {
+  addProduct(body: {}): Promise<IProduct> {
     return requests.post(`/product/`, body);
   }
 
-  updateProductByID(id: string, body: {}): Promise<any> {
+  updateProduct(id: string, body: {}): Promise<IProduct> {
     return requests.post(`/product/${id}`, body);
   }
 
-  deleteProductByID(id: string): Promise<any> {
+  deleteProduct(id: string): Promise<IProduct> {
     return requests.delete(`/product/${id}`);
   }
 }

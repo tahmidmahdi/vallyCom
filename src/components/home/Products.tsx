@@ -1,17 +1,29 @@
 import Product from 'components/common/Product';
-import { IProduct } from 'Models/types';
 import React from 'react';
-import { Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
+import ProductsSkeleton from 'skeletons/ProductsSkeleton';
+import { IProduct } from 'types';
 
-const Products = ({ products }: IProduct[]) => {
+interface IProps {
+  products: IProduct[] | null;
+  isLoading: boolean;
+}
+
+const Products = ({ products, isLoading }: IProps) => {
+  console.log('products', products);
   return (
     <div className="my-5">
-      <h2 className="mb-4">Latest Products</h2>
-      <Row>
-        {products.map((product: IProduct) => (
-          <Product key={product._id} product={product} />
-        ))}
-      </Row>
+      <Container>
+        <h2 className="mb-4">Latest Products</h2>
+        {isLoading && <ProductsSkeleton />}
+        {!isLoading && (
+          <Row className="align-items-stretch">
+            {products?.map((product: IProduct) => (
+              <Product key={product._id} product={product} />
+            ))}
+          </Row>
+        )}
+      </Container>
     </div>
   );
 };
