@@ -1,3 +1,4 @@
+import ProductDetails from 'components/home/ProductDetails';
 import React, { Suspense } from 'react';
 import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -13,6 +14,7 @@ const AppRouter: React.FC = ({ children }) => {
           <Suspense fallback={<div>Loading...</div>}>
             <Route exact path="/" component={Home} />
             <Route exact path="/help" component={Help} />
+            <Route exact path="/product/:id" component={ProductDetails} />
           </Suspense>
         </Container>
       </Switch>
